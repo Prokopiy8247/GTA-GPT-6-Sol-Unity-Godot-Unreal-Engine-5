@@ -1,0 +1,59 @@
+{
+  "name": "HarborCity",
+  "level": "/Game/GTA/Maps/HarborCity",
+  "units": "Unreal centimeters",
+  "playable_bounds": {"min": [-30000, -30000, -500], "max": [30000, 30000, 15000]},
+  "ground_coast_y": -19000,
+  "road_width": 1600,
+  "arterial_width": 2000,
+  "vertical_roads_x": [-24000, -12000, 0, 12000, 24000],
+  "horizontal_roads_y": [-16000, -4000, 8000, 20000],
+  "districts": {
+    "downtown": {"center": [12000, 14000], "extent": [18000, 16000]},
+    "residential": {"center": [-16500, 14000], "extent": [13500, 16000]},
+    "industrial": {"center": [-15000, -10000], "extent": [15000, 9000]},
+    "waterfront": {"center": [0, -24500], "extent": [30000, 5500]},
+    "park": {"center": [-18000, 25000], "extent": [6000, 5000]},
+    "aviation": {"center": [18000, 25000], "extent": [6000, 5000]}
+  },
+  "landmarks": {
+    "player_spawn": [1400, 6900, 160],
+    "safehouse": [-18000, 12000, 120],
+    "clothing_shop": [-9500, 12000, 120],
+    "weapon_shop": [-5000, 9000, 120],
+    "police_station": [18000, 11480, 120],
+    "hospital": [6000, -520, 120],
+    "clinic": [-21000, 19000, 120],
+    "vehicle_garage": [16000, -5000, 120],
+    "service_depot": [-18000, -12520, 120],
+    "gas_station": [-6000, -12520, 120],
+    "marina": [0, -18000, 100],
+    "helipad": [16000, -17800, 145],
+    "airstrip": [21000, 22000, 145],
+    "park_viewpoint": [-18500, 25400, 650]
+  },
+  "traffic_loops": [
+    {
+      "name": "outer_clockwise",
+      "speed_cm_s": 1300,
+      "points": [[-24350,-16350,60],[-12000,-16350,60],[0,-16350,60],[12000,-16350,60],[24350,-16350,60],[24350,-4000,60],[24350,8000,60],[24350,20350,60],[12000,20350,60],[0,20350,60],[-12000,20350,60],[-24350,20350,60],[-24350,8000,60],[-24350,-4000,60]]
+    },
+    {
+      "name": "downtown_clockwise",
+      "speed_cm_s": 900,
+      "points": [[-350,-4350,60],[12000,-4350,60],[24350,-4350,60],[24350,8000,60],[24350,20350,60],[12000,20350,60],[-350,20350,60],[-350,8000,60]]
+    },
+    {
+      "name": "residential_clockwise",
+      "speed_cm_s": 700,
+      "points": [[-24350,7650,60],[-12000,7650,60],[350,7650,60],[350,20350,60],[-12000,20350,60],[-24350,20350,60]]
+    },
+    {
+      "name": "industrial_clockwise",
+      "speed_cm_s": 900,
+      "points": [[-24350,-16350,60],[-12000,-16350,60],[350,-16350,60],[350,-4000,60],[-12000,-3650,60],[-24350,-3650,60]]
+    }
+  ],
+  "pedestrian_hubs": [[-18000,12000,120],[-5000,9000,120],[-21000,19000,120],[18000,11480,120],[6000,-520,120],[16000,-5000,120],[-18000,25000,120]],
+  "notes": "South of y=-19000 is the water basin. Visual road centers are exact; traffic lanes are offset 350 cm. All loops close from their last point to their first."
+}

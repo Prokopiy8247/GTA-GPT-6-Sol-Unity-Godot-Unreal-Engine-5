@@ -1,0 +1,65 @@
+coll = start_asset("Boat")
+verts=[(-2.65,-.78,.20),(-2.65,.78,.20),(1.90,-1.05,.22),(1.90,1.05,.22),(2.86,0,.33),
+       (-2.34,-.62,-.34),(-2.34,.62,-.34),(1.70,-.72,-.24),(1.70,.72,-.24),(2.56,0,-.17)]
+faces=[(0,2,4,3,1),(5,6,8,9,7),(0,5,7,2),(1,3,8,6),(2,7,9,4),(3,4,9,8),(0,1,6,5)]
+mesh(coll,"Deep V planing hull",verts,faces,"turquoise")
+mesh(coll,"Gunwale dark lip",[(-2.67,-.82,.24),(-2.67,.82,.24),(1.9,-1.09,.26),(1.9,1.09,.26),(2.9,0,.37)],[(0,2,4,3,1)],"graphite")
+box(coll,"Open cockpit deck",(-.63,0,.29),(2.62,1.60,.12),"sand",.045)
+box(coll,"Bow cushion",(1.68,0,.39),(1.18,1.36,.17),"cream",.08)
+box(coll,"Center console",(.15,0,.68),(.65,.72,.65),"graphite",.07)
+mesh(coll,"Sloped windshield",[(.16,-.50,.96),(.16,.50,.96),(.62,.45,1.37),(.62,-.45,1.37)],[(0,1,2,3)],"glass")
+box(coll,"Helm",(-.04,-.13,1.04),(.10,.34,.10),"steel",.02)
+for side in (-1,1):
+    box(coll,"Bucket seat",(-.80,side*.45,.66),(.62,.44,.18),"cream",.06)
+    box(coll,"Seat back",(-1.08,side*.45,.90),(.18,.44,.54),"cream",.05)
+    line(coll,"Safety rail",(1.55,side*.96,.32),(2.42,side*.34,.55),.025,"silver",8)
+    box(coll,"Hull stripe",(-.4,side*.86,.03),(3.4,.035,.075),"coral",.01)
+box(coll,"Outboard motor",(-2.74,0,.15),(.52,.45,.85),"graphite",.09)
+box(coll,"Prop guard",(-3.04,0,-.33),(.27,.28,.17),"steel",.02)
+join_asset(coll,"Boat")
+
+coll = start_asset("Helicopter")
+ico(coll,"Aerodynamic cabin",(.30,0,1.48),(1.83,.87,.73),"police",2)
+ico(coll,"Nose glazing",(1.64,0,1.60),(.57,.69,.52),"glass",2)
+for side in (-1,1):
+    box(coll,"Side door window",(.52,side*.87,1.64),(1.15,.035,.70),"glass",.025)
+    box(coll,"Sliding door line",(-.08,side*.90,1.27),(.025,.01,.76),"silver")
+    line(coll,"Skid rail",(-1.10,side*.83,.23),(1.55,side*.83,.23),.060,"graphite",10)
+    line(coll,"Front skid strut",(.70,side*.64,1.02),(.70,side*.83,.26),.044,"steel",9)
+    line(coll,"Rear skid strut",(-.84,side*.58,1.00),(-.78,side*.83,.26),.044,"steel",9)
+    box(coll,"Door handle",(.21,side*.91,1.22),(.20,.025,.05),"cream",.01)
+line(coll,"Tail boom",(-1.2,0,1.55),(-4.05,0,1.85),.22,"police",10)
+mesh(coll,"Tail fin",[(-4.10,-.04,1.78),(-3.65,-.04,1.79),(-3.90,-.04,2.90),(-4.25,-.04,2.65)],[(0,1,2,3)],"turquoise")
+box(coll,"Tail stabilizer",(-3.64,0,1.76),(.70,1.25,.095),"steel",.025)
+cyl(coll,"Rotor mast",(-.16,0,2.37),.075,.67,"steel",12)
+cyl(coll,"Rotor cap",(-.16,0,2.77),.20,.13,"graphite",12)
+for axis in range(4):
+    angle=axis*math.pi/2
+    if axis%2==0:
+        box(coll,"Main rotor blade",(-.16 + 1.83*math.cos(angle),1.83*math.sin(angle),2.78),(3.35,.20,.045),"graphite",.025)
+    else:
+        box(coll,"Main rotor blade",(-.16 + 1.83*math.cos(angle),1.83*math.sin(angle),2.78),(.20,3.35,.045),"graphite",.025)
+cyl(coll,"Tail rotor hub",(-4.17,-.12,2.11),.08,.15,"steel",10,(math.pi/2,0,0))
+box(coll,"Tail rotor vertical",(-4.17,-.22,2.11),(.07,.035,1.05),"graphite",.015)
+box(coll,"Tail rotor horizontal",(-4.17,-.22,2.11),(1.05,.035,.07),"graphite",.015)
+box(coll,"Belly marking",(.36,-.89,1.20),(1.06,.02,.085),"turquoise",.01)
+join_asset(coll,"Helicopter")
+
+coll = start_asset("Plane")
+ico(coll,"Fuselage",(0,0,1.32),(3.33,.60,.57),"cream",2)
+ico(coll,"Glass cockpit",(.65,0,1.72),(1.02,.52,.35),"glass",2)
+mesh(coll,"Port wing",[(-.70,0,1.35),(1.18,0,1.35),(.20,-4.42,1.17),(-.62,-4.42,1.17)],[(0,1,2,3)],"turquoise")
+mesh(coll,"Starboard wing",[(-.70,0,1.35),(1.18,0,1.35),(.20,4.42,1.17),(-.62,4.42,1.17)],[(0,1,2,3)],"turquoise")
+box(coll,"Wing spar",(.04,0,1.32),(1.12,8.85,.12),"turquoise_dark",.025)
+mesh(coll,"Tailplane",[(-3.0,-1.75,1.52),(-2.36,-1.75,1.52),(-1.95,0,1.54),(-2.36,1.75,1.52),(-3.0,1.75,1.52)],[(0,1,2,3,4)],"turquoise")
+mesh(coll,"Vertical stabilizer",[(-3.1,0,1.40),(-2.3,0,1.40),(-2.69,0,2.52),(-3.22,0,2.39)],[(0,1,2,3)],"coral")
+for side in (-1,1):
+    line(coll,"Landing gear strut",(.15,side*1.38,1.19),(.12,side*1.38,.36),.044,"steel",9)
+    cyl(coll,"Landing wheel",(.12,side*1.38,.28),.27,.15,"rubber",12,(math.pi/2,0,0))
+    cyl(coll,"Wheel cap",(.12,side*1.47,.28),.13,.02,"silver",10,(math.pi/2,0,0))
+box(coll,"Nose cowling",(3.28,0,1.31),(.34,.70,.64),"graphite",.08)
+cyl(coll,"Prop spinner",(3.51,0,1.31),.11,.22,"silver",12,(0,math.pi/2,0))
+box(coll,"Propeller",(3.66,0,1.31),(.07,.13,2.03),"graphite",.03)
+box(coll,"Propeller crosspiece",(3.66,0,1.31),(.07,1.03,.13),"graphite",.03)
+join_asset(coll,"Plane")
+save_master()

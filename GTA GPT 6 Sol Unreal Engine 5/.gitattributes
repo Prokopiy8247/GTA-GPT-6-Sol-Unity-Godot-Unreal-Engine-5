@@ -1,0 +1,14 @@
+* text=auto
+*.cmd text eol=crlf
+*.command text eol=lf
+*.sh text eol=lf
+*.md text eol=lf
+*.ini text eol=lf
+*.json text eol=lf
+*.py text eol=lf
+*.uasset binary
+*.umap binary
+*.blend binary
+*.fbx binary
+*.png binary
+*.wav binary
