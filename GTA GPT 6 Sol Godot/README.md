@@ -8,7 +8,7 @@ Godot и другие инструменты устанавливать не н�
 
 ### Windows 10/11
 
-1. Откройте [последний релиз](https://github.com/Prokopiy8247/GTA-GPT-6-Sol-Unity-Godot-Unreal-Engine-5/releases/latest).
+1. Откройте [релиз Godot v1.0.0](https://github.com/Prokopiy8247/GTA-GPT-6-Sol-Unity-Godot-Unreal-Engine-5/releases/tag/godot-v1.0.0).
 2. Скачайте `Harborline-Windows-x86_64.zip`.
 3. Нажмите на архив правой кнопкой и выберите **Извлечь всё**. Не запускайте игру прямо из архива.
 4. Откройте распакованную папку и дважды нажмите `Harborline.exe`.
@@ -16,7 +16,7 @@ Godot и другие инструменты устанавливать не н�
 
 ### macOS (Intel и Apple Silicon)
 
-1. Откройте [последний релиз](https://github.com/Prokopiy8247/GTA-GPT-6-Sol-Unity-Godot-Unreal-Engine-5/releases/latest).
+1. Откройте [релиз Godot v1.0.0](https://github.com/Prokopiy8247/GTA-GPT-6-Sol-Unity-Godot-Unreal-Engine-5/releases/tag/godot-v1.0.0).
 2. Скачайте `Harborline-macOS-Universal.zip` и распакуйте его.
 3. Перетащите `Harborline.app` в папку **Applications/Программы**.
 4. При первом запуске нажмите на приложение правой кнопкой (или `Control` + клик), выберите **Open/Открыть**, затем подтвердите запуск.
@@ -60,7 +60,7 @@ godot --headless --path . --export-release "Windows x86_64" build/windows/Harbor
 godot --headless --path . --export-release "macOS Universal" build/macos/Harborline-macOS-Universal.zip
 ```
 
-GitHub Actions автоматически повторяет smoke-тест и создаёт оба архива при публикации тега `v*`.
+GitHub Actions автоматически повторяет smoke-тест и создаёт оба архива при публикации тега `godot-v*`.
 
 ## Материалы проекта
 

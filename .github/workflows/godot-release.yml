@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     tags:
-      - "v*"
+      - "godot-v*"
 
 permissions:
   contents: write
@@ -84,5 +84,5 @@ jobs:
             dist/Harborline-Windows-x86_64.zip \
             dist/Harborline-macOS-Universal.zip \
             dist/SHA256SUMS.txt \
-            --title "Harborline ${GITHUB_REF_NAME}" \
+            --title "Harborline ${GITHUB_REF_NAME#godot-}" \
             --generate-notes

@@ -11,7 +11,7 @@
 
 ## Скачать и запустить Godot-версию
 
-Откройте [последний релиз](https://github.com/Prokopiy8247/GTA-GPT-6-Sol-Unity-Godot-Unreal-Engine-5/releases/latest) и скачайте архив для своей системы:
+Откройте [релиз Godot v1.0.0](https://github.com/Prokopiy8247/GTA-GPT-6-Sol-Unity-Godot-Unreal-Engine-5/releases/tag/godot-v1.0.0) и скачайте архив для своей системы:
 
 - `Harborline-Windows-x86_64.zip` — Windows 10/11, 64-bit;
 - `Harborline-macOS-Universal.zip` — macOS на Intel и Apple Silicon.
