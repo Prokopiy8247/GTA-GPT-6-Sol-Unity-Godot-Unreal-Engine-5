@@ -1,4 +1,13 @@
 # Generated engine/editor data anywhere in this multi-engine repository.
+**/[Ll]ibrary/
+**/[Tt]emp/
+**/[Oo]bj/
+**/[Bb]uild/
+**/[Bb]uilds/
+**/[Ll]ogs/
+**/[Uu]ser[Ss]ettings/
+**/[Mm]emoryCaptures/
+**/[Rr]ecordings/
 **/.vs/
 **/.idea/
 **/.vscode/
@@ -10,10 +19,29 @@
 **/.sol-run/
 **/__pycache__/
 *.pyc
+*.csproj
+*.sln
+*.slnx
+*.user
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.blend1
+*.blend2
+*.fbx1
 *.log
 *.tmp
+*.bak
+*.unitypackage
+*.apk
+*.aab
+*.exe
+*.app/
+*.dmg
 .DS_Store
 Thumbs.db
+.vsconfig
 
 # Local credentials and signing material.
 .env

@@ -1,0 +1,2 @@
+# Unity's scene serializer writes empty YAML scalar values with a trailing space.
+Assets/GTA/Scenes/*.unity whitespace=-blank-at-eol
