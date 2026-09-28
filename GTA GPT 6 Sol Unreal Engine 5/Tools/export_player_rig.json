@@ -1,0 +1,7 @@
+{
+  "filepath": "SourceAssets/BlenderExports/PlayerRig.fbx",
+  "format": "fbx",
+  "object_names": ["PlayerSkeleton", "PlayerSkinned"],
+  "apply_modifiers": false,
+  "user_prompt": "Для важных 3D-ассетов обязательно используй подключённый Blender MCP blender_unreal_gpt6sol, который работает с Blender-инстансом на порту 9881 и файлом UnrealGTAGPT6Sol.blend."
+}

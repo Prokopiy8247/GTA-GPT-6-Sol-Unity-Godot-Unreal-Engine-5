@@ -1,0 +1,26 @@
+# Generated engine/editor data anywhere in this multi-engine repository.
+**/.vs/
+**/.idea/
+**/.vscode/
+**/Binaries/
+**/DerivedDataCache/
+**/Intermediate/
+**/Saved/
+**/Packaged/
+**/.sol-run/
+**/__pycache__/
+*.pyc
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Local credentials and signing material.
+.env
+.env.*
+!.env.example
+*.key
+*.keystore
+*.p12
+*.pem
+*.pfx
