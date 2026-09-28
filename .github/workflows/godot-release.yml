@@ -1,0 +1,88 @@
+name: Build Godot release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: godot-release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  GODOT_VERSION: "4.7.2"
+  GODOT_CHANNEL: "stable"
+  PROJECT_DIR: "GTA GPT 6 Sol Godot"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Download official Godot editor and export templates
+        shell: bash
+        run: |
+          set -euo pipefail
+          base_url="https://github.com/godotengine/godot-builds/releases/download/${GODOT_VERSION}-${GODOT_CHANNEL}"
+          curl --fail --location --retry 3 --output godot.zip \
+            "${base_url}/Godot_v${GODOT_VERSION}-${GODOT_CHANNEL}_linux.x86_64.zip"
+          curl --fail --location --retry 3 --output export_templates.tpz \
+            "${base_url}/Godot_v${GODOT_VERSION}-${GODOT_CHANNEL}_export_templates.tpz"
+          unzip -q godot.zip -d godot-bin
+          chmod +x "godot-bin/Godot_v${GODOT_VERSION}-${GODOT_CHANNEL}_linux.x86_64"
+          mkdir -p "$HOME/.local/share/godot/export_templates/${GODOT_VERSION}.${GODOT_CHANNEL}"
+          unzip -q export_templates.tpz -d export-templates
+          cp -a export-templates/templates/. \
+            "$HOME/.local/share/godot/export_templates/${GODOT_VERSION}.${GODOT_CHANNEL}/"
+
+      - name: Keep the editable Blender source out of Godot import
+        shell: bash
+        run: |
+          set -euo pipefail
+          mv "$PROJECT_DIR/GodotGTAGPT6Sol.blend" "$RUNNER_TEMP/GodotGTAGPT6Sol.blend"
+
+      - name: Import project and run smoke test
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot="godot-bin/Godot_v${GODOT_VERSION}-${GODOT_CHANNEL}_linux.x86_64"
+          "$godot" --headless --editor --path "$PROJECT_DIR" --quit
+          "$godot" --headless --path "$PROJECT_DIR" \
+            --script res://gta/tools/smoke_test.gd
+
+      - name: Export Windows and macOS builds
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot="godot-bin/Godot_v${GODOT_VERSION}-${GODOT_CHANNEL}_linux.x86_64"
+          mkdir -p dist/windows
+          "$godot" --headless --path "$PROJECT_DIR" --export-release \
+            "Windows x86_64" "$GITHUB_WORKSPACE/dist/windows/Harborline.exe"
+          (cd dist/windows && zip -9 -q -r ../Harborline-Windows-x86_64.zip .)
+          "$godot" --headless --path "$PROJECT_DIR" --export-release \
+            "macOS Universal" "$GITHUB_WORKSPACE/dist/Harborline-macOS-Universal.zip"
+          sha256sum dist/Harborline-*.zip > dist/SHA256SUMS.txt
+
+      - name: Upload files to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh release create "${GITHUB_REF_NAME}" \
+            dist/Harborline-Windows-x86_64.zip \
+            dist/Harborline-macOS-Universal.zip \
+            dist/SHA256SUMS.txt \
+            --title "Harborline ${GITHUB_REF_NAME}" \
+            --generate-notes

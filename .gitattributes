@@ -1,0 +1,7 @@
+# Keep repository text deterministic across Windows and macOS/Linux.
+* text=auto eol=lf
+*.bat text eol=crlf
+*.command text eol=lf
+*.blend binary
+*.glb binary
+*.wav binary

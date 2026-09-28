@@ -1,0 +1,34 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+*.blend1
+*.blend2
+*.import
+*.log
+/.sol-run/*.log
+/.sol-run/*.png
+/.sol-run/*.wav
+/.sol-run/*.avi
+/build/
+/exports/
+
+# Local configuration, credentials, certificates, and signing material.
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+*.keystore
+*.jks
+*.mobileprovision
+export_credentials.cfg
+/.godot/export_credentials.cfg
+
+# OS/editor files.
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
